@@ -203,13 +203,15 @@ const PredictionForm = () => {
       smiles: molecule.smiles,
     }));
 
-    const baseUrl = process.env.REACT_APP_API_BASE_URL;
+    const baseUrl = process.env.REACT_APP_MODEL_API_URL;
   
     const apiUrl = `${baseUrl}/predict/${proteinCode}`;
   
     try {
 
       console.log('Request Body:', requestBody);
+      
+      console.log('API URL:', apiUrl);
 
       const response = await fetch(apiUrl, {
         method: 'POST',
