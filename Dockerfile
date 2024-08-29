@@ -5,7 +5,7 @@ FROM node:18 AS build
 WORKDIR /app
 
 # Copy the package.json and package-lock.json files
-COPY package*.json ./
+COPY small-molecule-protein-binding-affinity-web/package*.json ./
 
 # Install dependencies
 RUN npm install
