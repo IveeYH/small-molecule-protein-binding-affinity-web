@@ -19,6 +19,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import CasinoIcon from '@mui/icons-material/Casino'; // Dice icon
 import { parse } from 'papaparse';
+import process from 'process';
 
 const styles = {
   fullHeight: {
