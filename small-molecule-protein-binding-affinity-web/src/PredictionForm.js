@@ -202,8 +202,10 @@ const PredictionForm = () => {
       id: index + 1,
       smiles: molecule.smiles,
     }));
+
+    const baseUrl = process.env.REACT_APP_API_BASE_URL;
   
-    const apiUrl = `https://dev.api.small-molecule-protein-binding-affinity.ilodata.tech/predict/${proteinCode}`;
+    const apiUrl = `${baseUrl}/predict/${proteinCode}`;
   
     try {
       const response = await fetch(apiUrl, {
