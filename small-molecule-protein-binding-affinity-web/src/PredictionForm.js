@@ -215,17 +215,7 @@ const PredictionForm = () => {
         },
         body: JSON.stringify(requestBody),
       });
-
-      console.log(response);
-      console.log(response.json());
-      console.log(response.ok);
-      console.log(response.status);
-      console.log(response.statusText);
-  
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-  
+      
       const data = await response.json();
       setResult(data);
       
