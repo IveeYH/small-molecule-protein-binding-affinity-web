@@ -215,8 +215,12 @@ const PredictionForm = () => {
         },
         body: JSON.stringify(requestBody),
       });
-      
+
       console.log(response);
+      console.log(response.json());
+      console.log(response.ok);
+      console.log(response.status);
+      console.log(response.statusText);
   
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -224,6 +228,7 @@ const PredictionForm = () => {
   
       const data = await response.json();
       setResult(data);
+      
     } catch (error) {
       console.error('Error:', error);
       setError('Something went wrong');  // Set the error message
