@@ -29,11 +29,5 @@ RUN chmod +x /start-nginx.sh
 # Expose the port as required by Cloud Run
 EXPOSE 8080
 
-# Pass build arguments into the Dockerfile
-ARG REACT_APP_MODEL_API_URL
-
-# Make the ARG available as an ENV variable during build
-ENV REACT_APP_MODEL_API_URL=${REACT_APP_MODEL_API_URL}
-
 # Run Nginx using the template configuration
 CMD ["/start-nginx.sh"]
