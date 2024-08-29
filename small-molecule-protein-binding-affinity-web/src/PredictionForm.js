@@ -208,6 +208,9 @@ const PredictionForm = () => {
     const apiUrl = `${baseUrl}/predict/${proteinCode}`;
   
     try {
+
+      console.log('Request Body:', requestBody);
+
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
@@ -215,7 +218,9 @@ const PredictionForm = () => {
         },
         body: JSON.stringify(requestBody),
       });
-      
+
+      console.log('Response:', response);
+
       const data = await response.json();
       setResult(data);
       
