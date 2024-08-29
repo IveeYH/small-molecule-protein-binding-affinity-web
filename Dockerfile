@@ -4,12 +4,6 @@ FROM node:18 AS build
 # Set the working directory
 WORKDIR /app
 
-# Pass build arguments into the Dockerfile
-ARG REACT_APP_MODEL_API_URL
-
-# Make the ARG available as an ENV variable during build
-ENV REACT_APP_MODEL_API_URL=${REACT_APP_MODEL_API_URL}
-
 # Copy the package.json and package-lock.json files
 COPY small-molecule-protein-binding-affinity-web/package*.json ./
 
@@ -34,6 +28,12 @@ RUN chmod +x /start-nginx.sh
 
 # Expose the port as required by Cloud Run
 EXPOSE 8080
+
+# Pass build arguments into the Dockerfile
+ARG REACT_APP_MODEL_API_URL
+
+# Make the ARG available as an ENV variable during build
+ENV REACT_APP_MODEL_API_URL=${REACT_APP_MODEL_API_URL}
 
 # Run Nginx using the template configuration
 CMD ["/start-nginx.sh"]
