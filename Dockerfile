@@ -19,17 +19,15 @@ RUN npm run build
 # Stage 2: Serve the React app with nginx
 FROM nginx:stable-alpine
 
-RUN rm /etc/nginx/conf.d/default.conf
-
-COPY small-molecule-protein-binding-affinity-web/nginx.conf /etc/nginx/conf.d
-
-# Copy the build output from the previous stage to the nginx html directory
+WORKDIR /etc/nginx/templates/
 COPY --from=build /app/build /usr/share/nginx/html
 
-# Expose the port nginx is using
-EXPOSE 443
+COPY nginx.conf.template /etc/nginx/templates/nginx.conf.template
+COPY start-nginx.sh /start-nginx.sh
+RUN chmod +x /start-nginx.sh
 
-ENV PORT=443
+# Expose the port as required by Cloud Run
+EXPOSE 8080
 
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Run Nginx using the template configuration
+CMD ["/start-nginx.sh"]
