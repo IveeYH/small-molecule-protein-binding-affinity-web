@@ -215,9 +215,10 @@ const PredictionForm = () => {
         },
         body: JSON.stringify(requestBody),
       });
+      
+      console.log(response);
   
       if (!response.ok) {
-        console.log(response);
         throw new Error('Network response was not ok');
       }
   
