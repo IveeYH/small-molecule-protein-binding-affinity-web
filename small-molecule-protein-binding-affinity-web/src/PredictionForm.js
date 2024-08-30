@@ -203,7 +203,7 @@ const PredictionForm = () => {
       smiles: molecule.smiles,
     }));
 
-    const baseUrl = process.env.REACT_APP_API_BASE_URL;
+    const baseUrl = process.env.REACT_APP_API_BASE_URL || "https://api.drugscope.ilodata.tech";
   
     const apiUrl = `${baseUrl}/predict/${proteinCode}`;
   
